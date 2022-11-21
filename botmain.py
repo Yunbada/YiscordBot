@@ -8,7 +8,7 @@ import discord
 from discord.ext import commands
 import asyncio
 
-discord_token = 'DiscordToken'
+discord_token = 'Token'
 
 #디스코드 클라이언트 클래스
 intents=discord.Intents.default()
@@ -55,13 +55,13 @@ async def on_message(message):
     elif msg == "시간":
         await channel.send('알고싶은 나라를 적으세요')
         ctx = await client.wait_for('message')
-        if ctx == '한국':
+        if ctx.content == '한국':
             country_n = 'Asia/Seoul'
-        elif ctx == '빅토리아':
+        elif ctx.content == '빅토리아':
             country_n = 'Australia/Victoria'
-        elif ctx == '미국':
+        elif ctx.content == '미국':
             country_n = 'US/Eastern'
-        elif ctx == '캐나다':
+        elif ctx.content == '캐나다':
             country_n = 'Canada/Eastern'
         else:
             await channel.send('그런 나라는 없습니다. 한국, 빅토리아, 미국, 캐나다 중 선택하세요\n')            
